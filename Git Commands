@@ -1,0 +1,86 @@
+Git Commands
+------------
+
+git version
+
+git help
+
+git help config
+
+See current config value
+-------------------------
+git config --global --list
+
+Setting global values to config
+git config --global user.name "Carlos Vergara"
+git config --global user.email "carlos.vergara@cbsinteractive.com"
+
+See git user-based config file
+-------------------------------
+cat ~/.gitconfig
+
+see current directory
+---------------------
+pwd
+
+Git initialization
+------------------
+git init [project] (this parameter is optional)
+
+Check untracked files
+---------------------
+git status
+
+Add file to Git index
+---------------------
+git add [filename]
+
+Add several files to Git index
+------------------------------
+git add .
+
+Unstage file (so that the file is not commited)
+-----------------------------------------------
+git reset HEAD [filename]
+
+Create a commit
+---------------------
+git commit -m "my message"
+
+Adding and commit in one step
+---------------------
+git commit -am "my message" 
+
+
+Restore file to last commit
+---------------------------
+git restore README.md
+
+Display Git log
+---------------
+git log - to close press q
+git log --oneline --graph --decorate --color 
+
+Remove a file from the repo
+---------------------------
+git rm debug.log 
+
+move a file to another folder
+-----------------------------
+git mv index.html web
+
+Add origin to a local repository
+--------------------------------
+git remote add remote-name(origin) [remote-repo-location]
+
+List Git's Remotes
+------------------
+git remote -v
+
+Push to remote
+--------------
+git push -u remote-name branch-name (-u we need it the first time)
+
+Pull from remote repo
+---------------------
+git pull origin master 

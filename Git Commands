@@ -46,6 +46,10 @@ Git initialization
 ------------------
 git init [project] (this parameter is optional)
 
+Check the remote repository
+---------------------------
+git remote -v
+
 Check untracked files
 ---------------------
 git status

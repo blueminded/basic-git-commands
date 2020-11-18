@@ -248,3 +248,69 @@ git merge [branch name] -m "message related to the merge"
 RESOLVING CONFLICTS
 -------------------
 git mergetool  
+
+STASHING
+it's used to save temporary work. The stash command only stash tracked files
+
+Saving a stash
+--------------
+git stash
+
+Saving a stash with description
+-------------------------------
+git stash save "your description here"
+
+Saving a stash including not tracking files
+-------------------------------------------
+git stash -u
+
+Show a specific stash information
+---------------------------------
+git stash show stash@{stash number}
+
+Apply a stash (recover the stash)
+--------------
+git stash apply
+
+Apply a specific stash
+----------------------
+ git stash apply stash@{stash number}
+
+List stashes
+------------
+git stash list
+
+Remove the last stash
+---------------------
+git stash drop
+
+Remove all stashes
+---------------------
+git stash clear
+
+Remove a specific stash
+-----------------------
+git stash drop stash@{stash number}
+
+Stash files into a branch
+-------------------------
+git stash branch [branch name]
+
+TAGGING
+
+Create a tag
+------------
+git tag [Tag Name]
+
+Create a annotated tag
+------------
+git tag -a [tag name] ex. git tag -a v-1.0
+
+tag list
+--------
+git tag --list
+
+remove a tag
+------------
+git tag --delete [Tag Name]
+

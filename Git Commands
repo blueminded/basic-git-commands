@@ -12,16 +12,35 @@ See current config value
 git config --global --list
 
 Setting global values to config
+-------------------------------
 git config --global user.name "Carlos Vergara"
 git config --global user.email "carlos.vergara@cbsinteractive.com"
+
+Setting Diff and Merge Tools
+----------------------------
+git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
+git config --global merge.tool p4merge
+git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
+git config --global diff.tool p4merge
+git config --global difftool.prompt false
+git config --global mergetool.prompt false
 
 See git user-based config file
 -------------------------------
 cat ~/.gitconfig
 
+Update git user-based config file
+-------------------------------
+nano ~/.gitconfig
+
 see current directory
 ---------------------
 pwd
+
+Exit from VIM when using GIT
+---------------------------
+ESC + :q! -> Exit without saving
+ESC + :wq -> Exit and saving
 
 Git initialization
 ------------------
@@ -47,8 +66,8 @@ Create a commit
 ---------------------
 git commit -m "my message"
 
-Adding and commit in one step
----------------------
+Adding and commit in one step when file si updated
+--------------------------------------------------
 git commit -am "my message" 
 
 
@@ -60,14 +79,48 @@ Display Git log
 ---------------
 git log - to close press q
 git log --oneline --graph --decorate --color 
+git log --oneline --graph --decorate --color --all
+git log --abbrev-commit
+git log {from #commit}...{to #commit}
+git log --since="3 days ago" 
+git log -- filename
+git log  --follow -- {filename}
+
+Show commit information
+-----------------------
+git show {commit id}
 
 Remove a file from the repo
 ---------------------------
 git rm debug.log 
 
+Remove a folder recursively(be carefull)
+---------------------------
+rm -rf level1
+
+Remove a file from the repo using operating system
+--------------------------------------------------
+rm debug.log 
+
 move a file to another folder
 -----------------------------
 git mv index.html web
+
+Rename file using git
+-----------------------------
+git mv currentfile.html renamed-file.html
+
+Rename file using operating system
+----------------------------------
+mv currentfile.html renamed-file.html
+
+add changes from all tracked and untracked files
+------------------------------------------------
+git add -A 
+
+update tracked files
+--------------------
+git add -u 
 
 Add origin to a local repository
 --------------------------------
@@ -84,3 +137,110 @@ git push -u remote-name branch-name (-u we need it the first time)
 Pull from remote repo
 ---------------------
 git pull origin master 
+
+Clone from remote repo
+---------------------
+git clone [URL repo]
+
+List all tracked files from repo
+--------------------------------
+git ls-files
+
+Creating Git alias
+------------------
+git config --global alias.hist "the command you want without git word"
+ex. git config --global alias.hist "log --all --graph --decorate --oneline"
+
+Check differences between staging area and Working directory
+------------------------------------------------------------
+git diff
+
+Check differences in Diff tool
+------------------------------
+git difftool
+
+Check differences between Working directory and last commit
+------------------------------------------------------------
+git diff HEAD
+
+Check differences between staged area and last commit
+-----------------------------------------------------
+git diff --staged HEAD
+
+Check differences between staged area and last commit(Difftool)
+---------------------------------------------------------------
+git difftool --staged HEAD
+
+Check differences between staged area and last commit(one file)
+---------------------------------------------------------------
+git diff -- [path to file]
+
+Check differences between staged area and last commit(one file -difftool)
+---------------------------------------------------------------
+git difftool -- [path to file]
+
+Check differences between two commits
+-------------------------------------
+git diff [commitID from] [commitID to]
+
+compare HEAD with HEAD-1
+-------------------------------------
+git diff HEAD HEAD^
+
+compare HEAD with HEAD-1 )(Difftool)
+-------------------------------------
+git difftool HEAD HEAD^
+
+compare local with remote
+-------------------------
+git diff master origin/master 
+
+compare local with remote (Difftool)
+------------------------------------
+git difftool master origin/master
+
+List local branches
+-------------------
+git branch
+
+List all branches(including remote)
+-----------------------------------
+git branch -a
+
+Create a new Branch
+-------------------
+git branch [branch name]
+
+Create and checkout a new Branch
+--------------------------------
+git checkout -b [branch name]
+
+Position into a branch
+----------------------
+git checkout [branch name]
+
+Checkout a remote branch
+------------------------
+git checkout -b [branch name] origin/[branch name]
+
+Rename a branch
+---------------
+git branch -m [current branch] [new branch name]
+
+Delete a branch
+---------------
+git branch -d [branch name]
+
+MERGING
+In order to merge from branch A to B, first I need to checkout B, then just to be sure execute `git difftool B A` to verify the changes if everything is OK run `git merge A` the result is the merge of A into B
+------------------
+git merge [branch name] ->this delete the commit from the branch merged
+git merge [branch name] --no-ff -> this preserve the commit from the branch merged
+
+Automatic merge
+---------------
+git merge [branch name] -m "message related to the merge"
+
+RESOLVING CONFLICTS
+-------------------
+git mergetool  

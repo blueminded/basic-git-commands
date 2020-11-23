@@ -7,6 +7,10 @@ git help
 
 git help config
 
+Solution if Git not working after an update
+-------------------------------------------
+sudo xcode-select --install
+
 See current config value
 -------------------------
 git config --global --list
@@ -306,6 +310,14 @@ Create a annotated tag
 ------------
 git tag -a [tag name] ex. git tag -a v-1.0
 
+Create a annotated tag for specific commit
+------------
+git tag -a [tag name] [commit id] ex. git tag -a v-9.8-beta 758f96b
+
+Another way to created a annotated tag
+--------------------------------------
+git tag [tag name] -m "a message" Ex. git tag v-1.2 -m "Release 1.2"
+
 tag list
 --------
 git tag --list
@@ -314,3 +326,31 @@ remove a tag
 ------------
 git tag --delete [Tag Name]
 
+Push specific tag to remote repo
+--------------------------------
+git push origin [tag name]
+
+Push all local tags to remote
+-----------------------------
+git push --tags
+
+Delete a remote tag(It's recommended also to delete it in your local)
+-------------------
+git push origin :[tag name] Ex.git push origin :v-0.9.8-beta
+
+TIME TRAVEL WITH GIT
+
+When using RESET always do it in your local repo not in a public one, this can leads
+to big problems. It mainly for experimental purpose
+
+git reset HEAD^1
+git reset HEAD^2
+
+and for get back to the future you can use the command:
+
+git reflog
+
+This command display all the actions done, there you can find the commit ids and travel to
+that specific commit using:
+
+git reset [commit id]

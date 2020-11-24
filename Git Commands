@@ -239,6 +239,10 @@ Delete a branch
 ---------------
 git branch -d [branch name]
 
+Delete a remote branch
+---------------
+git push origin :[branch name] ex.  git push origin :feature/profile-tracking
+
 MERGING
 In order to merge from branch A to B, first I need to checkout B, then just to be sure execute `git difftool B A` to verify the changes if everything is OK run `git merge A` the result is the merge of A into B
 ------------------

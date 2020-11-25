@@ -15,6 +15,10 @@ See current config value
 -------------------------
 git config --global --list
 
+Edit git config file with default editor
+----------------------------------------
+git config --global -e
+
 Setting global values to config
 -------------------------------
 git config --global user.name "Carlos Vergara"
@@ -22,12 +26,14 @@ git config --global user.email "carlos.vergara@cbsinteractive.com"
 
 Setting Diff and Merge Tools
 ----------------------------
-git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
 git config --global merge.tool p4merge
-git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
-git config --global diff.tool p4merge
-git config --global difftool.prompt false
+git config --global mergetool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
 git config --global mergetool.prompt false
+git config --global mergetool.keepbackup false
+
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path /Applications/p4merge.app/Contents/MacOS/p4merge
+git config --global difftool.prompt false
 
 See git user-based config file
 -------------------------------
@@ -57,6 +63,10 @@ git remote -v
 Check untracked files
 ---------------------
 git status
+
+Check untracked files
+---------------------
+git status -s
 
 Add file to Git index
 ---------------------

@@ -80,6 +80,10 @@ Unstage file (so that the file is not commited)
 -----------------------------------------------
 git reset HEAD [filename]
 
+Remove a file from staging area
+-------------------------------
+git rm --cached [file name]
+
 Create a commit
 ---------------------
 git commit -m "my message"
@@ -93,6 +97,27 @@ Restore file to last commit
 ---------------------------
 git restore README.md
 
+
+Show commit information
+-----------------------
+git show {commit id}
+
+Amend commit
+-------------
+You should only use it on a local branch or on your own branch 
+that only you use and has no children. Basically using this command 
+you can change the message for a commit or even add new staged files to the commit. 
+The result will be a new commit with the changes on the amend.
+
+IMPORTANT:ONLY TO USE IN YOUR OWN BRANCH AND LOCAL 
+
+ex. git commit --amend (open the editor)
+    git commit --amend -m "your new message" (inline)
+
+Example removing a commited file
+1. git rm --cached [file-name] this ends with the file as not tracked file
+2. git commit --amend -m "The file is not more on the commit"
+
 Display Git log
 ---------------
 git log - to close press q
@@ -103,10 +128,6 @@ git log {from #commit}...{to #commit}
 git log --since="3 days ago" 
 git log -- filename
 git log  --follow -- {filename}
-
-Show commit information
------------------------
-git show {commit id}
 
 Remove a file from the repo
 ---------------------------

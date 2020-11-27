@@ -19,10 +19,16 @@ Edit git config file with default editor
 ----------------------------------------
 git config --global -e
 
+
+
 Setting global values to config
 -------------------------------
 git config --global user.name "Carlos Vergara"
 git config --global user.email "carlos.vergara@cbsinteractive.com"
+
+Setting always to prune when Fetch or Pull
+------------------------------------------
+git config --global fetch.prune true
 
 Setting Diff and Merge Tools
 ----------------------------
@@ -87,6 +93,18 @@ git rm --cached [file name]
 Create a commit
 ---------------------
 git commit -m "my message"
+
+Uncommit the last commit
+------------------------
+git reset HEAD~
+
+You can create an alias for that, in your git global file add:
+[alias]
+    uncommit = "reset HEAD~"
+
+At this point, you can select the files you want in the commit and
+execute the amend to create a new fresh commit
+
 
 Adding and commit in one step when file si updated
 --------------------------------------------------

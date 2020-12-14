@@ -19,8 +19,6 @@ Edit git config file with default editor
 ----------------------------------------
 git config --global -e
 
-
-
 Setting global values to config
 -------------------------------
 git config --global user.name "Carlos Vergara"
@@ -62,6 +60,10 @@ Git initialization
 ------------------
 git init [project] (this parameter is optional)
 
+Git initialization inside a folder
+----------------------------------
+git init .
+
 Check the remote repository
 ---------------------------
 git remote -v
@@ -82,9 +84,14 @@ Add several files to Git index
 ------------------------------
 git add .
 
-Unstage file (so that the file is not commited)
+Unstage files (so that the file is not commited)
 -----------------------------------------------
-git reset HEAD [filename]
+This command just unstage files that are in the stage area but changes are not discarded
+
+git reset HEAD (for all files)
+git reset HEAD [filename](for a specific file)
+
+
 
 Remove a file from staging area
 -------------------------------
@@ -158,6 +165,10 @@ rm -rf level1
 Remove a file from the repo using operating system
 --------------------------------------------------
 rm debug.log 
+
+Remove git from a folder
+------------------------
+rm .rf .git
 
 move a file to another folder
 -----------------------------
@@ -312,6 +323,7 @@ it's used to save temporary work. The stash command only stash tracked files
 Saving a stash
 --------------
 git stash
+git stash push ?? Investigate this.
 
 Saving a stash with description
 -------------------------------
@@ -333,6 +345,10 @@ Apply a specific stash
 ----------------------
  git stash apply stash@{stash number}
 
+Aply stash and remove it from stashes
+--------------------------------------
+git stash pop
+
 List stashes
 ------------
 git stash list
@@ -351,7 +367,8 @@ git stash drop stash@{stash number}
 
 Stash files into a branch
 -------------------------
-git stash branch [branch name]
+git stash branch [branch name] or
+git stash branch []new branch name] stash@{stash number}
 
 TAGGING
 
@@ -374,6 +391,10 @@ git tag [tag name] -m "a message" Ex. git tag v-1.2 -m "Release 1.2"
 tag list
 --------
 git tag --list
+
+Search tag
+----------
+git tag -l "[search word]". ex. git tag -l "OnMaster*" or git tag -l "rebas*"
 
 remove a tag
 ------------
@@ -407,3 +428,47 @@ This command display all the actions done, there you can find the commit ids and
 that specific commit using:
 
 git reset [commit id]
+
+HARD RESET 
+Use it with caution it can be messy. Use it always on local branches.
+
+Reset everything to last commit any change on stage area will be lost 
+---------------------------------------------------------------------
+git reset head --hard
+
+Remove all untracked files and folders
+--------------------------------------
+git clean -d -x -f
+
+Interactive clean
+-----------------
+git clean -d -x -i
+
+Revert a commit
+---------------
+When you revert you will end up with the state you were before your commit.
+git revert [commit id you want to revert]
+
+
+Uncommit a commited file (local)
+----------------------------------
+git reset head^ -- [file name]
+git commit --amend (open editor to update message) or
+git commit --amend -m "your new message here"
+
+Uncommit a commited file (remote)
+----------------------------------
+git checkout [commitID or HEAD^] -- [filename]
+git commit -am "your reverted message"
+git push
+git checkout HEAD^ -- [filename] get back to your unfinished work, again do
+
+CherryPicks
+-----------
+When using cherry picks, when select a commit, 
+all commit after the selected will be ignored
+
+git cherry-pick [sha-1 commit id]
+
+after resolve the conflicts in the cherry pick execute
+git cherry-pick --continue

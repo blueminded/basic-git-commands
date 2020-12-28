@@ -84,6 +84,10 @@ Add several files to Git index
 ------------------------------
 git add .
 
+Ignoring files
+--------------
+nano .gitignore (on the root project)
+
 Unstage files (so that the file is not commited)
 -----------------------------------------------
 This command just unstage files that are in the stage area but changes are not discarded
@@ -194,6 +198,14 @@ Add origin to a local repository
 --------------------------------
 git remote add remote-name(origin) [remote-repo-location]
 
+Update remote references
+------------------------
+git remote set-url origin [remote-repo-location]
+
+Display remote repo information
+-------------------------------
+git remote show origin
+
 List Git's Remotes
 ------------------
 git remote -v
@@ -208,7 +220,7 @@ git pull origin master
 
 Clone from remote repo
 ---------------------
-git clone [URL repo]
+git clone [URL repo] [local folder name](optional)
 
 List all tracked files from repo
 --------------------------------
